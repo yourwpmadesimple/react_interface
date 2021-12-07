@@ -7,6 +7,18 @@ import AppointmentInfo from './components/AppointmentInfo';
 
 function App() {
   let [ appointmentList, setAppointmentList ] = useState([]);
+  let [ query, setQuery ] = useState('');
+
+  const filteredAppointments = appointmentList.filter(
+    item => {
+      return (
+        item.petName.toLowerCase().includes(query.toLowerCase()) ||
+        item.ownerName.toLowerCase().includes(query.toLowerCase()) ||
+        item.aptNotes.toLowerCase().includes(query.toLowerCase()) ||
+        item.aptDate.toLowerCase().includes(query.toLowerCase())
+      )
+    }
+  )
 
   const fetchData = useCallback(() => {
     const url = './data.json';
@@ -27,10 +39,11 @@ function App() {
         <BiArchive className="inline-block text-red-400" />Your Appointments
       </h1>
       <AddAppointment />
-      <Search />
+      <Search query={ query }
+        onQueryChange={ myQuery => setQuery(myQuery) } />
 
       <ul className="divide-y divide-gray-200">
-        { appointmentList
+        { filteredAppointments
           .map(appointment => {
             return (
               <AppointmentInfo
