@@ -1,12 +1,26 @@
+import { useState, useEffect, useCallback } from 'react'
 import { BiArchive } from 'react-icons/bi';
 
 import AddAppointment from './components/AddAppointment'
 import Search from './components/Search';
 import AppointmentInfo from './components/AppointmentInfo';
 
-import appointmentList from './data.json'
-
 function App() {
+  let [ appointmentList, setAppointmentList ] = useState([]);
+
+  const fetchData = useCallback(() => {
+    const url = './data.json';
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setAppointmentList(data)
+      });
+  }, [])
+
+  useEffect(() => {
+    fetchData()
+  }, [ fetchData ])
+
   return (
     <div className="App container mx-auto px-20 mt-3 font-thin">
       <h1 className="text-5xl">
