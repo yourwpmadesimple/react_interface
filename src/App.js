@@ -1,6 +1,6 @@
 import { BiArchive } from 'react-icons/bi'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <h1><BiArchive />Your Appointments</h1>
