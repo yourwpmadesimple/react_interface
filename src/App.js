@@ -33,7 +33,15 @@ function App() {
         { appointmentList
           .map(appointment => {
             return (
-              <AppointmentInfo key={ appointment.id } appointment={ appointment } />
+              <AppointmentInfo
+                key={ appointment.id }
+                appointment={ appointment }
+                onDeleteAppointment={
+                  appointmentId =>
+                    setAppointmentList(appointmentList.filter(appointment =>
+                      appointment.id !== appointmentId))
+                }
+              />
             )
           })
         }
