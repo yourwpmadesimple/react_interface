@@ -75,4 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 _Lead Developer @CreamCityMarketing_
 
- [https://creamcitymarketing.com](Cream City Marketing)
+ [Cream City Marketing](https://creamcitymarketing.com)
