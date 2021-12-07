@@ -1,5 +1,6 @@
-import { BiArchive } from 'react-icons/bi'
-import Search from './components/Search'
+import { BiArchive } from 'react-icons/bi';
+import AddAppointment from './components/AddAppointment';
+import Search from './components/Search';
 
 const App = () => {
   return (
@@ -7,6 +8,7 @@ const App = () => {
       <h1 className="text-5xl">
         <BiArchive className="inline-block text-red-400" />Your Appointments
       </h1>
+      <AddAppointment />
       <Search />
     </div>
   );
