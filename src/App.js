@@ -46,9 +46,19 @@ function App() {
       <h1 className="text-5xl">
         <BiArchive className="inline-block text-red-400" />Your Appointments
       </h1>
-      <AddAppointment />
+
+      <AddAppointment 
+      onSendAppointment={myAppointment => setAppointmentList([...appointmentList, myAppointment])}
+      lastId={appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id) : max, 0)}
+      />
+
       <Search query={ query }
-        onQueryChange={ myQuery => setQuery(myQuery) } />
+        onQueryChange={ myQuery => setQuery(myQuery) }
+        orderBy={orderBy}
+        onOrderByChange={myOrder => setOrderBy(myOrder)}
+        sortBy={sortBy}
+        onSortByChange={mySort => setSortBy(mySort)}
+        />
 
       <ul className="divide-y divide-gray-200">
         { filteredAppointments
